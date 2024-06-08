@@ -7,8 +7,8 @@ This repository holds docker files and build workflows that are cross cutting th
 | Image | Version |
 | ----- | ------- |
 | MongoDB Developer Image | [![Docker Image Version](https://img.shields.io/docker/v/cratis/mongodb?label=MongoDB&logo=docker&sort=semver)](https://hub.docker.com/r/cratis/mongodb) |
-| Base Development Image | [![Docker Image Version](https://img.shields.io/docker/v/cratis/mongodb?label=MongoDB&logo=docker&sort=semver)](https://hub.docker.com/r/cratis/base) |
-| Base Development Image w/ MongoDB | [![Docker Image Version](https://img.shields.io/docker/v/cratis/mongodb?label=MongoDB&logo=docker&sort=semver)](https://hub.docker.com/r/cratis/base-mongodb) |
+| Base Development Image | [![Docker Image Version](https://img.shields.io/docker/v/cratis/base?label=Base&logo=docker&sort=semver)](https://hub.docker.com/r/cratis/base) |
+| Base Development Image w/ MongoDB | [![Docker Image Version](https://img.shields.io/docker/v/cratis/base-mongodb?label=Base-MongoDB&logo=docker&sort=semver)](https://hub.docker.com/r/cratis/base-mongodb) |
 
 ### MongoDB
 
