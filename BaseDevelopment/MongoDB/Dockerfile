@@ -4,7 +4,7 @@
 # MongoDB Development Image
 # Build runtime image
 ####################################
-FROM cratis:base
+FROM cratis/base
 ARG VERSION
 
 RUN echo Version = ${VERSION}
