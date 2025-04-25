@@ -1,0 +1,9 @@
+services:
+  mongo:
+    image: mongo
+    command: ["/bin/sh", "-c", "chmod +x /entrypoint.sh && /entrypoint.sh"]
+    ports:
+      - 27017:27017
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+      - ./data:/data/db
