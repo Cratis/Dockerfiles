@@ -10,6 +10,16 @@ ARG MONGO_PACKAGE=mongodb-org
 
 RUN echo Version = ${VERSION}
 
+RUN ARCH=$(dpkg --print-architecture) && \
+    case "$ARCH" in \
+        amd64)  SSL_PKG_URL="http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb" ;; \
+        arm64)  SSL_PKG_URL="http://launchpadlibrarian.net/475575244/libssl1.1_1.1.1f-1ubuntu2_arm64.deb" ;; \
+        *)      echo "Unsupported architecture: $ARCH" && exit 1 ;; \
+    esac && \
+    wget $SSL_PKG_URL -O libssl1.1.deb && \
+    dpkg -i libssl1.1.deb && \
+    rm libssl1.1.deb
+
 # Install MongoDB
 RUN wget --no-check-certificate -qO - https://www.mongodb.org/static/pgp/server-8.0.asc | apt-key add - \
     && echo "deb [ arch=$(dpkg --print-architecture) ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/8.0 multiverse" > /etc/apt/sources.list.d/mongodb-org-8.0.list \
