@@ -1,6 +1,11 @@
 # syntax=docker/dockerfile:1
 FROM ubuntu:focal
 
+ARG VERSION=8.0.8
+ARG MONGO_PACKAGE=mongodb-org
+
+RUN echo Version = ${VERSION}
+
 WORKDIR /app
 
 # Install Tools
@@ -17,14 +22,17 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install MongoDB
-RUN wget --no-check-certificate -qO - https://www.mongodb.org/static/pgp/server-7.0.asc | apt-key add - \
-    && echo "deb [ arch=$(dpkg --print-architecture) ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/7.0 multiverse" > /etc/apt/sources.list.d/mongodb-org-7.0.list \
+RUN wget --no-check-certificate -qO - https://www.mongodb.org/static/pgp/server-8.0.asc | apt-key add - \
+    && echo "deb [ arch=$(dpkg --print-architecture) ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/8.0 multiverse" > /etc/apt/sources.list.d/mongodb-org-8.0.list \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
-    mongodb-org-server \
-    mongodb-org-shell \
-    mongodb-mongosh \
-    mongodb-database-tools \
+        ${MONGO_PACKAGE}=$VERSION \
+        ${MONGO_PACKAGE}-server=$VERSION \
+        ${MONGO_PACKAGE}-shell=$VERSION \
+        ${MONGO_PACKAGE}-mongos=$VERSION \
+        ${MONGO_PACKAGE}-tools=$VERSION \
+        ${MONGO_PACKAGE}-database=$VERSION \
+        ${MONGO_PACKAGE}-database-tools-extra=$VERSION \    
     && rm -rf /var/lib/apt/lists/*
 
 # # Setup MongoDB as single-node replicaset
