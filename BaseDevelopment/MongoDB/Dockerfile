@@ -12,7 +12,7 @@ RUN echo Version = ${VERSION}
 
 # Install MongoDB
 RUN wget --no-check-certificate -qO - https://www.mongodb.org/static/pgp/server-8.0.asc | apt-key add - \
-    && echo "deb [ arch=$(dpkg --print-architecture) ] https://repo.mongodb.org/apt/ubuntu focaldocker/mongodb-org/8.0 multiverse" > /etc/apt/sources.list.d/mongodb-org-8.0.list \
+    && echo "deb [ arch=$(dpkg --print-architecture) ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/8.0 multiverse" > /etc/apt/sources.list.d/mongodb-org-8.0.list \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
         ${MONGO_PACKAGE}=$VERSION \
