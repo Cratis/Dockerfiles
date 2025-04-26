@@ -4,7 +4,7 @@
 # Base Development image
 # Build runtime image
 ####################################
-FROM mcr.microsoft.com/dotnet/runtime:9.0.0-bookworm-slim
+FROM mcr.microsoft.com/dotnet/aspnet:9.0.4-bookworm-slim
 ARG VERSION
 
 RUN echo Version = ${VERSION}
