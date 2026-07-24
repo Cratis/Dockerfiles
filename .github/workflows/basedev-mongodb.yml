@@ -30,6 +30,10 @@ on:
     paths:
       - "BaseDevelopment/MongoDB/**"
 
+# Creating the GitHub release needs a write-capable token.
+permissions:
+  contents: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
