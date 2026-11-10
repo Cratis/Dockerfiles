@@ -10,6 +10,8 @@ The images are built for `linux/amd64` and `linux/arm64` and published to [Docke
 | MongoDB Developer Image | [![Docker Image Version](https://img.shields.io/docker/v/cratis/mongodb?label=MongoDB&logo=docker&sort=semver)](https://hub.docker.com/r/cratis/mongodb) |
 | Base Development Image | [![Docker Image Version](https://img.shields.io/docker/v/cratis/base?label=Base&logo=docker&sort=semver)](https://hub.docker.com/r/cratis/base) |
 | Base Development Image w/ MongoDB | [![Docker Image Version](https://img.shields.io/docker/v/cratis/base-mongodb?label=Base-MongoDB&logo=docker&sort=semver)](https://hub.docker.com/r/cratis/base-mongodb) |
+| Base Development Image (.NET 11, Ubuntu 26.04) | `cratis/base:dotnet11`, `cratis/base:<version>-dotnet11` |
+| Base Development Image w/ MongoDB (.NET 11, Ubuntu 26.04) | `cratis/base-mongodb:dotnet11`, `cratis/base-mongodb:<version>-dotnet11` |
 
 ### MongoDB
 
@@ -25,6 +27,20 @@ have tools on top.
 ### Base Development Image w/ MongoDB
 
 The base development image w/ MongoDB is based on the base development image and adds MongoDB.
+
+### .NET 11 variants
+
+The opt-in `dotnet11` tags use the ASP.NET Core 11 runtime on Ubuntu 26.04 (resolute).
+The existing unsuffixed version tags and `latest` remain on the .NET 10 build path.
+Use `<version>-dotnet11` to select a specific release of either image.
+
+The MongoDB variant includes MongoDB 8.0.8, a single-node replica set, and `/usr/bin/tini`.
+It uses MongoDB's Ubuntu 24.04 (noble) packages with OpenSSL 3; MongoDB does not yet
+publish server packages for resolute. No legacy libssl1.1 package is installed.
+
+The **Base Development Images for .NET 11** workflow publishes both images for
+`linux/amd64` and `linux/arm64`, building MongoDB on the matching versioned base.
+The separate `BaseDevelopmentDotNet11/` Dockerfiles do not change the existing builds.
 
 ## The Cratis ecosystem
 
